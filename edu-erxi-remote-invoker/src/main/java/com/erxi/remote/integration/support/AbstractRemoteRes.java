@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author qingyin
  * @date 2016/8/27
  */
-public class AbstractRemoteRes implements Serializable{
+public abstract class AbstractRemoteRes implements Serializable{
     private static final long serialVersionUID = -4115791655799368714L;
 
     private String            respCode;
