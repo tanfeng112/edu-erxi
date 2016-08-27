@@ -9,5 +9,14 @@
 
     <artifactId>edu-erxi-biz</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.erxi</groupId>
+            <artifactId>edu-erxi-dal</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.erxi</groupId>
+            <artifactId>edu-erxi-remote-invoker</artifactId>
+        </dependency>
+    </dependencies>
 </project>

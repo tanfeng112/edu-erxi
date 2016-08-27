@@ -35,6 +35,11 @@
                 <artifactId>edu-erxi-biz</artifactId>
                 <version>${project-version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.erxi</groupId>
+                <artifactId>edu-erxi-remote-invoker</artifactId>
+                <version>${project-version}</version>
+            </dependency>
             <!-- Spring -->
             <dependency>
                 <groupId>org.springframework</groupId>

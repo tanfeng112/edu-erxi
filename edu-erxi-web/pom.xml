@@ -12,7 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>com.erxi</groupId>
-            <artifactId>edu-erxi-dal</artifactId>
+            <artifactId>edu-erxi-biz</artifactId>
         </dependency>
         <!-- SpringMVC -->
         <dependency>

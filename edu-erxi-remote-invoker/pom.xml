@@ -9,5 +9,11 @@
 
     <artifactId>edu-erxi-remote-invoker</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.erxi</groupId>
+            <artifactId>edu-erxi-common-lib</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
