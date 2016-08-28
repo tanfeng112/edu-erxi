@@ -1,5 +1,6 @@
-package com.erxi.common.utils;
+package com.erxi.remote.payment.processor.core.wechatpay;
 
+import com.erxi.common.utils.MD5Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -14,13 +15,55 @@ import java.io.StringReader;
 import java.util.*;
 
 /**
+ * 微信相关工具类
  * @author qingyin
  * @date 2016/8/27
  */
-public class XmlUtils {
+public class WeChatRequest {
 
-   static Logger LOG= LoggerFactory.getLogger(XmlUtils.class);
+    static Logger LOG= LoggerFactory.getLogger(WeChatRequest.class);
 
+
+    /**
+     * 随机字符串，不长于32位。
+     * @return
+     */
+    public static String getNonceStr() {
+        Random random = new Random();
+        return MD5Utils.GetMD5Code(String.valueOf(random.nextInt(10000)));
+    }
+
+    /**
+     * 时间戳
+     * @return
+     */
+    public static String getTimeStamp() {
+        return String.valueOf(System.currentTimeMillis() / 1000);
+    }
+
+    /**
+     * 微信支付签名算法sign
+     * @param key 商户的appsecret
+     * @param parameters
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static String createSign(SortedMap<Object, Object> parameters, String key) {
+        StringBuffer sb = new StringBuffer();
+        Set es = parameters.entrySet();// 所有参与传参的参数按照accsii排序（升序）
+        Iterator it = es.iterator();
+        while (it.hasNext()) {
+            Map.Entry entry = (Map.Entry) it.next();
+            String k = (String) entry.getKey();
+            Object v = entry.getValue();
+            if (null != v && !"".equals(v) && !"sign".equals(k)&& !"key".equals(k)) {
+                sb.append(k + "=" + v + "&");
+            }
+        }
+        sb.append("key=" + key);
+        String sign = MD5Utils.GetMD5Code(sb.toString()).toUpperCase();
+        return sign;
+    }
 
     /**
      * 解析xml字符串转成map集合
