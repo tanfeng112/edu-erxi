@@ -4,6 +4,7 @@ import com.erxi.remote.payment.bean.UnifiedOrderBean;
 import com.erxi.remote.payment.config.PaymentConfig;
 import com.erxi.remote.payment.config.PaymentConstants;
 import com.erxi.remote.payment.config.PaymentResponseEnum;
+import com.erxi.remote.payment.exception.PaymentException;
 import com.erxi.remote.payment.processor.context.PaymentContext;
 import com.erxi.remote.payment.config.PayChannelEnum;
 import com.erxi.remote.payment.processor.context.WeChatPayContext;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -81,6 +83,11 @@ public class WeChatPayChannelProxy extends BasePayChannelProxy{
             LOG.error("微信支付下单异常{}",context.getOutTradeNo());
             return false;
         }
+    }
+
+    @Override
+    public void processorPaymentNotify(HttpServletRequest request)  throws PaymentException {
+
     }
 
     @Override

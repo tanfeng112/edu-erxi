@@ -1,7 +1,9 @@
 package com.erxi.remote.payment.processor.core;
 
+import com.erxi.remote.payment.exception.PaymentException;
 import com.erxi.remote.payment.processor.context.PaymentContext;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -29,5 +31,9 @@ public interface PayChannelProxy {
     boolean processorPayment(PaymentContext paymentContext);
 
 
-
+    /**
+     * 处理支付回调
+     * @param request
+     */
+    void processorPaymentNotify(HttpServletRequest request) throws PaymentException;
 }

@@ -3,6 +3,8 @@ package com.erxi.remote.payment.processor;
 import com.erxi.remote.payment.processor.context.PaymentContext;
 import com.erxi.remote.payment.exception.PaymentException;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 支付处理
  * @author qingyin
@@ -19,9 +21,10 @@ public interface PaymentProcessor {
 
 
     /**
-     * //TODO 
+     * 微信支付将request传递下来
+     *
      * 处理支付回调 并更新订单状态
      * @throws PaymentException
      */
-    public void paymentCallback() throws PaymentException;
+    public void paymentCallback(HttpServletRequest request) throws PaymentException;
 }

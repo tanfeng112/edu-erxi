@@ -39,6 +39,16 @@ public abstract class AbstractPaymentProcessor implements PaymentProcessor{
     }
 
     /**
+     * 处理支付回调
+     * @param object
+     * @throws PaymentException
+     */
+    @Override
+    public void paymentCallback(Object object) throws PaymentException {
+        //TODO
+    }
+
+    /**
      * 参数检查
      * @param transactionContext
      * @return
